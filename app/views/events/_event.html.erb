@@ -1,0 +1,15 @@
+<div class="col-md-3">
+	<%= link_to controller: "events", action: "show", id: event.name.downcase.tr(' ','-') do %>		
+			<% event.images.each do |imagen| %>
+				<% if (imagen.flayer == true) %>
+					<%= image_tag(imagen.img.url(:thumb), :class => "img-responsive", :id => "img-search") %>
+				<% end %>
+			<% end %>
+		<div class="resultados-search">	
+			<span class="titulo"><%= event.name %></span><br>
+			<span class="ubicacion"><%= event.address %></span>
+			<span class="tipo-evento"><%= event.event_type.name %></span>
+			<span class="ciudad"><%= event.city.name %></span>
+		</div>
+	<% end %>
+</div>

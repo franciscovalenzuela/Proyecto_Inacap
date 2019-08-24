@@ -1,0 +1,44 @@
+<div id="globo-reporte" class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Lista de eventos</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table id="t-lista-e" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Fecha</th>
+						<th>Ciudad</th>
+						<th>Tipo evento</th>
+						<th>Productor</th>
+						<th>Patrocinado</th>
+						<th>Estado</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @events.each do |e| %>
+						<tr>
+							<td><%= e.name %></td>
+							<td><%= l e.date, format: :long %></td>
+							<td><%= e.city.name %></td>
+							<td><%= e.event_type.name %></td>
+							<td><%= e.producer.name %></td>
+							<td><%= e.sponsor %></td>
+							<td><%= e.event_status.name %></td>
+							<td><%= link_to "Detalle", :controller => "events", :action => "ingresos", :id => e.id %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+    <div id="r-paginator" class="text-center">
+      <%= paginate @events, :remote => true %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reference_code: MyString
+  user_id: 
+  section_id: 
+  transaction_state_id: 
+  quantity: 1
+  price: 1
+  signature: MyString
+  pol_response_code: MyString
+  reference_pol: MyString
+  pol_payment_method_type: 1
+  processing_date: 2014-10-09 22:31:13
+  description: MyString
+  message: MyString
+  merchant_name: MyString
+  transaction_id: MyString
+
+two:
+  reference_code: MyString
+  user_id: 
+  section_id: 
+  transaction_state_id: 
+  quantity: 1
+  price: 1
+  signature: MyString
+  pol_response_code: MyString
+  reference_pol: MyString
+  pol_payment_method_type: 1
+  processing_date: 2014-10-09 22:31:13
+  description: MyString
+  message: MyString
+  merchant_name: MyString
+  transaction_id: MyString

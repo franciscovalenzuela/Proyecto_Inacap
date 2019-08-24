@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_id: 
+  state: false
+  qr: MyString
+
+two:
+  section_id: 
+  state: false
+  qr: MyString

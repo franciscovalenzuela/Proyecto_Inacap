@@ -1,0 +1,15 @@
+<li class="<%= 'active' if current_page?('/') %>">
+	<%= link_to 'Inicio', :controller => '/users', :action => 'index' %>
+</li>
+
+<li class="<%= 'active' if current_page?('/events/search') %>">
+  <%= link_to 'Buscador', :controller => '/events', :action => 'search' %>
+</li>
+
+<li class="<%= 'active' if current_page?(new_user_session_path) %>">
+  <%= link_to 'Ingresar', new_user_session_path %>
+</li>
+
+<li class="<%= 'active' if current_page?(new_user_registration_path) %>">
+  <%= link_to 'Registro', new_user_registration_path %>
+</li>

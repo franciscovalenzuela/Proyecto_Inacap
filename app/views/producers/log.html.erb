@@ -1,0 +1,60 @@
+<% title "Area productoras" %>
+
+<div class="container" id="globo-standar-producers">
+  <div class="col-md-12" id="heading">
+    <h2>¿Quieres promocionar tu evento con NOSOTROS ?</h2>
+    <p><strong>Es muy facíl...</strong></p>
+    <p>Solo debes Registrarte en un pequeño formulario haciendo click en el botón que se cuentra al final de este texto y LISTO! tu cuenta de usuario para agregar eventos está lista para utilizar. Debemos recordarte que puedes obtener tu cuenta GOLD para poder promocionar eventos sin restricciones y todos los que tu quieras. Gracias por confiar en nosotros <strong>PANORAMASUR ' Tu ciudad, tu evento...'</strong> </p>
+    <%= button_to ' + Registrate Aquí ', new_producer_registration_path, :method => :get, :class => 'btn btn-success btn-lg', :id => 'btn-registrar'%>
+  <div class="col-md-12" id="infologin">
+    <h1>Inicia tu sesión aquí </h1>
+  </div>
+  <div class="form-horizontal col-md-8 col-md-offset-2" role="form"><!-- LOGIN PRODUCERS -->
+   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class =>'form',:role => 'form'}) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+       <%= f.label :email, 'E-mail', :class => "col-md-3 control-label" %>
+      <div class="col-md-6">
+        <%= f.email_field :email, :autofocus => true, class: 'form-control', required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, 'Contraseña', :class => "col-md-3 control-label"  %>
+      <div class="col-md-6">
+        <%= f.password_field :password, class: 'form-control', required: true %>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal" id="link-politica">
+          Leer Politicas
+        </button>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-offset-3">
+      <%= f.submit 'Ingresar', :class => 'btn btn-primary', :id => 'btn-ingresar-prod'%> 
+    </div>
+    <% end %>
+  </div><!-- FIN LOGIN PRODUCERS -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Politicas Productor</h4>
+      </div>
+      <div class="modal-body">
+        1.- Si un evento es <strong>suspendido, cancelado o reprogramado</strong> debido a cualquier causa, incluso las que respondan a caso fortuito o fuerza mayor, no existirá derecho a efectuar reclamo alguno contra PanoramaSur por devoluciones o cambios, sin perjuicio que el valor de la entrada, incluyendo el cargo por servicio será reembolsado en un plazo de 48 Horas desde que se oficialice la suspensión, cancelación o reprogramación del evento en adelante. <br><br>
+        2.- La comisión que cobra PanoramaSur es al precio del ticket, no sobre el precio del ticket, entregando mayor claridad al cliente y no se cobra servicio alguno, la posible variación del valor de la entrada podría ser reflejada al sistema de transacción de PAYU que es un sistema externo que se encarga de realizar cobros por transacciones cursadas, de lo cual el productor se declara netamente responsables de la comisión de ese servicio, otorgando devoluciones si el evento es cancelados. <br><br>
+        3.- Si la fecha de un evento variara por alguna circunstancia, las Entradas serán válidas para la fecha definitiva que fije e informe el Organizador o productora.  <br><br>
+        4.- PanoramaSur.cl  en virtud de lo establecido en el artículo 3 bis letra b) de la ley 19.496, declara expresamente que por política de la empresa no se realizarán cambios ni devoluciones una vez finalizado el proceso de compra. Por esta razón, invitamos a nuestros consumidores a revisar cuidadosamente los datos de su orden antes de confirmar la compra, leer las clausulas antes es muy importante y responsabilidad de cada persona que adquiera un evento a través de este sistema. <br><br>
+        5.- En el momento de ingresar a su cuenta de usuario en PanoramaSur, los espectadores podrán ser sometidos a una serie de preguntas cerradas donde nos ayudaran a identificar su satisfacción con el sistema, para así brindar una mejor atención a los usuarios. <br><br>
+        6.- Cuando el cliente compra por medio de nuestro sistema, ponemos a su disposición normalmente la siguiente alternativa: <br>
+           -Ticket en formato PDF para su posterior impresión y verificación de su asistencia a través de un codigo generado por el sistema qr.
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

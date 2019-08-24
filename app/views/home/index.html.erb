@@ -1,0 +1,63 @@
+<% title "Tu ciudad, Tu evento - Eventos en la décima región" %>
+<!-- primer bloque -->
+<section class="firts_block">
+  <div class="container">
+	  <div class="row">
+	  	<div id="detail_block" class="col-md-8 col-md-offset-2">
+	  		<div class="col-md-8 col-md-offset-2 text-center">
+					<img class="img-responsive" src="/images/PanoramaSur-01.png" id="logo">
+					<div id="form-index">
+				          <form id="select" action="<%= events_search_path %>" method="get">
+						<%= collection_select(:city, :id, City.order("name ASC").all, :slug, :name, {:prompt => "-- Seleccione la ciudad --", :selected => @selected}, {class: "form-control input-lg"}) %>
+					   </form>
+					</div>
+				</div>
+	  	</div>
+		</div>
+  </div>
+  <p class="foto-name">Jaime B Cufillo. Fotografo</p>
+</section>
+<!-- Termina bloque -->
+
+ <!-- second_block -->
+<div class="container" id="destacados">
+  <div class="row">
+  	<div class="col-md-12">
+  		<h2 class="index-title">Eventos Destacados</h2>
+  		<hr>
+
+  		<% @patrocinados.each_with_index do |p, index| %>
+  			<% if (index == 0 || index == 4) %>
+  				<div class="row">
+  			<% end %>
+  					<div class="col-md-3">
+  						<div class="cuadro_intro_hover " style="background-color:#cccccc;">
+  							<p style="text-align:center; margin-top:0px; margin-bottom:20px;">
+  								<% p.images.each do |imagen| %>
+                    <% if (imagen.flayer == true) %>
+                      <%= image_tag imagen.img.url(:thumb) %>
+                    <% end %>
+                  <% end %>
+								</p>
+								<div class="caption">
+									<div class="blur"></div>
+									<div class="caption-text">
+										<h4 style="border-top:2px solid white; border-bottom:2px solid white; padding:10px;"><%= p.name %>
+										</h4>
+										<%= link_to("events/"+p.name.downcase.tr(' ', '-'), {:class =>"btn btn-primary"}) do %>
+											<span class="glyphicon glyphicon-plus">
+												Detalle
+											</span>
+										<% end %>	
+									</div>
+								</div>
+  						</div>
+  					</div>	
+  			<% if (index == 3 || index == 7) %>
+  				</div>
+  			<% end %>
+  		<% end %>
+  	</div>
+	</div>
+</div>
+<br>

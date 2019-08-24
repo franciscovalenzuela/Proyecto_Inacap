@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  img_file_name: MyString
+  event_id: 
+
+two:
+  img_file_name: MyString
+  event_id: 

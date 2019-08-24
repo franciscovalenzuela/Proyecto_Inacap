@@ -1,0 +1,24 @@
+<li class="<%= 'active' if current_page?('/') %>">
+	<%= link_to 'Inicio', :controller => 'users', :action => 'index' %>
+</li>
+
+<li class="<%= 'active' if current_page?('/events/search') %>">
+  <%= link_to 'Buscador', :controller => 'events', :action => 'search' %>
+</li>
+
+<% if current_user.user_role.name == "Normal" %>
+	<li class="<%= 'active' if current_page?(edit_user_registration_path) %>">
+	  <%= link_to current_user.email, edit_user_registration_path %>
+	</li>
+<% else %>
+	<li>
+	  <%= link_to "Panel Admin", "/admin" %>
+	</li>
+	<li>
+		<%= link_to 'ListaEventos', :controller => 'users', :action => 'grid' %>
+	</li>
+<% end %>
+
+<li>
+  <%= link_to 'Salir', destroy_user_session_path, :method=>'delete' %>
+</li>

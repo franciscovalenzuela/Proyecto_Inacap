@@ -1,0 +1,49 @@
+<%= javascript_include_tag('http://www.google.com/jsapi') %>
+<% title "Ingresos" %>
+
+<div id="globo-reporte" class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Ingresos <%= @event.name %></h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div id='chart'></div>
+			<%= render_chart @chart, 'chart' %>
+		</div>
+		<div class="col-md-4">
+			<%= @event.name %> <br>
+			<%= @event.date %> <br>
+			<%= @event.address %> <br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered">
+				<tr>
+					<th>Sección</th>
+					<th>Entradas Vendidas</th>
+					<th>Precio Unitario</th>
+					<th>Total Ingresos</th>
+				</tr>
+				<% acum = 0 %>
+				<% @lista_secciones.each_with_index do |l, index| %>
+					<% acum = acum + @lista_secciones[index][:total] %>
+					<tr>
+						<td><%= @lista_secciones[index][:nombre] %></td>
+						<td><%= @lista_secciones[index][:cantidad] %></td>
+						<td><%= number_to_currency(@lista_secciones[index][:precio], locale: 'es-CL', precision: 0) %></td>
+						<td><%= number_to_currency(@lista_secciones[index][:total], locale: 'es-CL', precision: 0) %></td>
+					</tr>
+				<% end %>
+				<tr class="success">
+					<td></td>
+					<td></td>
+					<td class="text-right"><strong>TOTAL</strong></td>
+					<td><%= number_to_currency(acum, locale: 'es-CL', precision: 0) %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

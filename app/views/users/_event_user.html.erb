@@ -1,0 +1,23 @@
+<% @events.each do |event| %>
+<div class="col-md-12" id="barra-contenido">
+	<%= link_to controller: "events", action: "show", id: event.name.downcase.tr(' ','-') do %>
+	<div class="resultados-user">
+		<div class="col-md-3">
+			<% event.images.each do |imagen| %>
+				<% if (imagen.flayer == true) %>
+					<%= image_tag(imagen.img.url(:thumb), :class => "img-responsive", :id => "img-evento-user") %>
+				<% end %>
+			<% end %>
+		</div>
+		<div class="col-md-9">
+			<span class="tipo-evento-user"><%= event.event_type.name %></span><br>
+			<span class="titulo-user"><%= event.name %></span><br>
+			<span class="ubicacion-user"><i class="fa fa-map-marker fa-1x"></i> <%= event.address %></span>,
+			<span class="ciudad-user"><%= event.city.name %></span>
+			<span class="fecha-user"><i class="fa fa-clock-o fa -1x"></i>  <%= event.date.to_formatted_s(:short) %></span>
+		</div>	
+	</div>			
+	<% end %>	
+</div>
+<% end %>
+

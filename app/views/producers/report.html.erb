@@ -1,0 +1,104 @@
+<% title "Reportes" %>
+<script>
+  $=jQuery;
+</script>
+<%= javascript_include_tag('http://www.google.com/jsapi') %>
+<div class="container" id="globo-reporte">
+  <h2>Información de tu evento</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="chartresposive">
+        <div id='chart' ></div>
+        <%= render_chart @chart, 'chart' %>
+      </div>
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Evento</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th>Numero</th>
+                        <th>Nombre</th>
+                        <th>Creado a las</th>
+                        <th>Resumen PDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 <% cnt = 0 %>
+                    <% @eventos_productor.each do |e| %>
+                    <tr>
+                                <td><%= cnt+=1 %></td>
+                                <td><%= e.name %></td>
+                                <td><%= l e.created_at, format: :long %></td>
+                                <td><p><button class="reportepdf btn btn-primary btn-md" value="<%= e.id %>" >Exportar</button></p></td>
+                                
+                            </tr>
+                     <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Información de tus entradas</h2>
+  </div>
+</div>
+  <% ct = 1 
+     ct2 = 0
+  %>
+<% @pie.zip(@events).each do |f, p| %>
+<% sect = [] %>
+<div class="row">
+  <div class="col-md-8">
+    <div class="brdr bgc-fff pad-10 box-shad btm-mrg-7 property-listing"> <!-- Evento -->
+      <div class="media">
+        
+          
+            <!--<p class="hidden-xs"> -->
+              <div id='chart_pie<%=ct%>'></div>
+              <%= render_chart f, 'chart_pie' + ct.to_s %>
+              <% ct+=1 %>
+            <!--</p> -->
+       
+      </div>
+    </div><!-- Fin Evento-->
+  </div>
+  <div class="col-md-4">
+    <h4 class="media-heading text-center">Evento: <%= p.name %></h4>
+            <ul class="list-inline mrg-0 btm-mrg-10 clr-535353 text-center">
+              <p> Cantidad de Entradas Vendidas</p>
+                <% sect.push(p.sections) %>
+                <% sect.each do |h|%>
+                  <% h.zip(@section_sale.drop(ct2)).each do |tipo, cantidad| %>
+                   <li> <%= cantidad %> entradas </li>
+                   <li><%= tipo.name %></li> 
+                   <br>
+                   <% ct2 +=1 %>
+                  <% end %><!-- fin for each nombres de secciones -->
+                <% end %> <!-- fin del segundo for each -->
+              
+            </ul>
+  </div>
+<% end %> <!-- fin del for each principal -->
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <!-- grafico para el pdf -->
+  <div id='tabla' ></div>
+      <%= render_chart @chart2, 'tabla' %>
+
+<%= form_tag(producers_report_pdf_path(format: 'pdf'), :method => :get, :id => 'form_pdf') do -%>
+  <%=hidden_field_tag 'dir' %>
+  <%=hidden_field_tag 'event' %>
+  <%= submit_tag 'Save', id: 'salir'%>
+<% end -%>
+  </div>
+</div>
+
+</div>
+

@@ -1,0 +1,123 @@
+<% title "Detalle compra" %>
+
+<div class="container" id="globo-standar">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>Detalle del Evento</h3>
+      <table class="table">
+        <tr>
+          <td>Nombre:</td>
+          <td><strong><%= @event.name %></strong></td>
+        </tr>
+        <tr>
+          <td>Fecha:</td>
+          <td><strong><%= l @event.date, format: :long %></strong></td>
+        </tr>
+        <tr>
+          <td>Tipo Evento:</td>
+          <td><strong><%= @event.event_type.name %></strong></td>
+        </tr>
+        <tr>
+          <td>Tipo Entrada:</td>
+          <td><strong><%= @section.name %></strong></td>
+        </tr>
+        <tr>
+          <td>Precio Unitario:</td>
+          <td><strong><%= @section.price %></strong></td>
+        </tr>
+        <tr>
+          <td>Cantidad Entrada:</td>
+          <td><strong><%= @cantidad %></strong></td>
+        </tr>
+        <tr>
+          <td>Precio Total:</td>
+          <td><strong><%= @amount %></strong></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <% if @entrada_gratuita %>
+              <form method="get" action="/ticket_free">
+
+                <input name="referenceCode" type="hidden"  value="<%= @referenceCode %>" >
+                <input name="amount"        type="hidden"  value="<%= @amount %>" >
+                <input name="extra1"        type="hidden"  value="<%= @cantidad %>" >
+                <input name="Submit"        type="submit"  value="Enviar" >
+
+              </form>
+            <% else %>
+              <form method="post" action="https://stg.gateway.payulatam.com/ppp-web-gateway/">
+
+                <!-- ID PayU -->
+                <input name="merchantId"    type="hidden"  value="<%= @merchantId %>" >
+
+                <!-- ???? -->
+                <input name="accountId"     type="hidden"  value="<%= @accountId %>" >
+
+                <!-- Descripcion producto = "Nombre seccion - Nombre evento" -->
+                <input name="description"   type="hidden"  value="<%= @description %>">
+                
+                <!-- Debe ser unico por cada envio -->
+                <input name="referenceCode" type="hidden"  value="<%= @referenceCode %>" >
+
+                <!-- Monto transacción -->
+                <input name="amount"        type="hidden"  value="<%= @amount %>" >
+                
+                <!-- ???? -->
+                <input name="tax"           type="hidden"  value="0"  >
+
+                <!-- ???? -->
+                <input name="taxReturnBase" type="hidden"  value="0" >
+                <input name="extra1" type="hidden"  value="<%= @cantidad %>" >
+
+                <input name="currency"      type="hidden"  value="<%= @currency %>" >
+
+                <!-- Firma digital 
+                “ApiKey~merchantId~referenceCode~amount~currency”. -->
+                <input name="signature"     type="hidden"  value="<%= @signature %>"  >
+                
+                <!-- Indica que estamos en modo test -->
+                <input name="test"          type="hidden"  value="1" >
+                
+                <!-- PayU envia respuesta compra a este correo -->
+                <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+
+                <!-- URL de REspuesta Exitosa o Falla -->
+                <input name="responseUrl"    type="hidden"  value="http://www.panoramasur.cl/response" >
+
+                <!-- Procedimiento interno compra exitosa -->
+                <input name="confirmationUrl"    type="hidden"  value="" >
+
+                <input name="Submit"        type="submit"  value="Enviar" >
+              </form>
+            <% end %>
+            
+    			</td>
+        </tr>
+      </table>    
+    </div>
+    <div class="col-md-4">
+      <h3>Usuario</h3>
+      <table class="table">
+        <% if @user %>
+          <tr>
+            <td>Nombre:</td>
+            <td><%=@user.name %></td>
+          </tr>
+          <tr>
+            <td>Apellido:</td>
+            <td><%=@user.last_name %></td>
+          </tr>
+          <tr>
+            <td>Teléfono:</td>
+            <td><%=@user.phone %></td>
+          </tr>
+          <tr>
+            <td>Dirección:</td>
+            <td><%=@user.adress %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

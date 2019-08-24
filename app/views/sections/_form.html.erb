@@ -1,0 +1,5 @@
+<%= form_for(@section, remote: true) do |f| %>
+	<%= f.label_tag(:name, "Nombre:") %>
+  	<%= f.text_field_tag(:name) %>
+  	<%= submit_tag("Guardar") %>
+<% end %>

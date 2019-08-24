@@ -1,0 +1,86 @@
+<% title @user.email %>
+<div class="container" >
+  <div class="col-md-3"><!-- perfil usuario -->
+    <div class="sidebar">
+      <div class="info-usuarios">
+        <%= image_tag(@user.avatar.url(:original), :class => "img-responsive", :id => "img-profile") %><br>
+        <div id="email-i-user" class="text-center"><%= @user.email %></div><br>
+        <hr style="margin-bottom: 20px; border-color: rgb(235, 235, 235);">
+        <%= link_to edit_user_registration_path do %>
+          <i class="fa fa-cog"></i>
+          <span>Configuración</span>
+        <% end %>
+        <br>
+        <%= link_to controller:"tickets", action:"index" do %>
+          <i class="fa fa-cog"></i>
+          <span>Tickets</span>
+        <% end %>
+      </div>    
+    </div>
+  </div> <!-- Fin perfin usuario -->
+  <div class="col-md-9">
+    <div class="titulo-mas-eventos" style="margin-top: -11px;">
+      <h2>Eventos Patrocinados</h2>
+    </div>
+    <div class="black"></div>
+    <div class="info-container">
+     <!-- CONTENIDO CARRUSEL -->
+      <div id="Carousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+        <!-- Wrapper for slides -->
+      <!--<ol class="carousel-indicators">
+        <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#Carousel" data-slide-to="1"></li>
+</ol> -->
+        <div class="carousel-inner">
+          <% 
+            v_cierre = [3, 7, 11, 15, 19, 23]
+            len = @patrocinados.length
+          %>
+          <% @patrocinados.each_with_index do |p, index| %>
+            <% if index % 4 == 0 %>
+        <div class="item<%= index == 0 ? ' active' : '' %> itemuser">
+          <div class="row">
+            <% end %>
+              <% p.images.each do |imagen| %>
+              <% if (imagen.flayer == true) %>
+                <% @principal = imagen.img.url(:thumb) %>
+              <% end %>
+            <% end %>
+            <%= render :partial => "patrocinado", :locals => {:identificador => p.name.downcase.tr(' ','-'), :name => p.name, :img => @principal} %>
+            <% if (v_cierre.include?(index) or index+1 == len) %>
+          </div>
+        </div>
+              <% end %>
+            <% end %>
+        </div>
+	<a class="left carousel-control" href="#Carousel" data-slide="prev">
+		<span class="fa fa-angle-left"></span>
+	</a>
+	<a class="right carousel-control" href="#Carousel" data-slide="next">
+		<span class="fa fa-angle-right"></span>
+	</a>
+      </div><!-- FIN CONTENIDO CARRUSEL -->
+  </div>
+  <div class="titulo-mas-eventos">
+    <h2>Próximos eventos</h2>
+  </div>
+    <div class="black"></div>
+      <div class="contenido-user" > 
+        <!-- EVENTOS PROXIMOS 7 DIAS -->
+        <div id="proximos-eventos">
+          <div class="row">
+            
+            <%= render "users/event_user" %>
+          </div>
+          <div id="user-i-mas-eventos" class="row text-right">
+              <%= link_to "Buscar más", controller: "events", action: "search" %>
+          </div>
+        </div>
+        <!-- FIN EVENTOS PROXIMOS 7 DIAS -->
+      </div>          
+    </div><!-- info-container fin -->
+  </div>
+</div>
+
+
+                

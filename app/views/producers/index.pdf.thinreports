@@ -1,0 +1,13 @@
+report.start_new_page do |page|
+	page.item(:productora).value(current_producer.name)
+      page.item(:evento).value(@events.name)
+      page.item(:nom).value(@events.name)
+      page.item(:ciudad).value(@events.city.name)
+      page.item(:dir).value(@events.address)
+      page.item(:fecha).value(@events.date)
+      page.item(:tip).value(@events.event_type.name)
+      page.item(:chart1).value(@chartg)
+      page.item(:view).value('123')
+      page.item(:visit).value('123')
+      page.item(:ast).value('123')
+end

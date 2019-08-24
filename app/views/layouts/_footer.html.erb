@@ -1,0 +1,20 @@
+<footer class="footer">
+  <div class="container">
+      <div class="col-md-4" id="ps_logo">
+        <%= image_tag('PanoramaSur-sombra.png', class: 'img-responsive') %>
+      </div>
+      <div class="col-md-4" id="accesos">
+        <ul class="lista-sombra">
+          <% if !producer_signed_in? %>
+            <li><a href="/producers/log">¿Quieres Publicar tu evento?</a></li>
+          <% end %> 
+          <li><a href="/pages/privacy">Politica y Privicidad</a></li>
+          <li><a href="/pages/about">Acerca de Nosotros</a><br></li>
+          <li><a href="/pages/price">Precios</a><br></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <a href="https://www.facebook.com/pages/Panoramasur/1516620951909579?ref=hl"><img class="img-responsive ps-fb" src="/images/ps-fb.png"></a>
+      </div>
+  </div>
+</footer>

@@ -1,0 +1,27 @@
+<div class="col-md-12">
+	<div id="mapa-busqueda"></div>
+</div>
+<%= javascript_tag do %>
+ 	var ciudad_mapa = <%= raw @ciudad.to_json %>;
+<% end %>
+
+<%= javascript_tag do %>
+	var eventos = [<%= raw @events_map.to_json %>];
+	var links = [];
+<% end %>
+<% @events_map.each do |e| %>
+	<%= javascript_tag do %>
+		var evento = {};
+		evento.id = <%= e.id %>;
+	<% end %>
+	<% e.images.each do |imagen| %>
+		<% if (imagen.flayer == true) %>
+			<%= javascript_tag do %>
+				evento.direccion = "<%= imagen.img.url(:thumb) %>";
+			<% end %>
+		<% end %>
+	<% end %>
+	<%= javascript_tag do %>
+		links.push(evento);
+	<% end %>
+<% end %>

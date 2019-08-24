@@ -1,0 +1,109 @@
+<% title "Modificación de datos" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" id="globo-standar-user">
+      <div class="text-center" id="heading-account"><h2>Edita tu Cuenta</h2></div>
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form', :class => 'form-horizontal'}) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="form-edit">
+        <div class="form-group">
+          <%= f.label "Nombres", :class => 'col-md-4 control-label' %>
+          <div class="col-md-8">
+            <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label "Apellidos", :class => 'col-md-4 control-label' %>
+          <div class="col-md-8">
+            <%= f.text_field :last_name, :autofocus => true, class: 'form-control' %>
+          </div>           
+        </div>
+        <% if @user.provider == "facebook" || @user.provider == "twitter" || @user.provider == "google_oauth2"%>
+        <div class="form-group"> <!-- solo campo email si es viene de esas redes sociales -->
+          <%= f.label :email, class: 'col-sm-4 control-label' %>
+          <div class="col-md-8">
+            <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+          </div>          
+        </div>
+        <% else %>
+        <div class="form-group"> <!-- campos normal -->
+          <%= f.label :email, class: 'col-sm-4 control-label' %>
+          <div class="col-md-8">
+            <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+          </div>
+        </div>
+        <% end -%>
+        <div class="form-group">
+           <%= f.label "Dirección", :class => 'col-md-4 control-label' %>
+           <div class="col-md-8">
+             <%= f.text_field :adress, :autofocus => true, class: 'form-control' %>
+           </div>           
+        </div>
+        <div class="form-group">
+           <%= f.label "Telefono", :class => 'col-md-4 control-label' %>
+          <div class="col-md-5">
+            <%= f.text_field :phone, :autofocus => true, class: 'form-control' %>
+          </div>
+        </div>
+         <div class="form-group">
+           <%= f.label :city, 'Ciudad', class: 'col-sm-4 control-label' %>
+            <div class="col-md-6">
+              <%= collection_select(:user, :city_id, City.order("name asc").all, :id, :name, {:prompt => "-- seleccione --", :selected => City.first.id}, {class: "form-control"}) %> 
+            </div>           
+        </div>
+        <div class="form-group">
+          <%= f.label "Cambiar Avatar", class: 'col-md-4 control-label' %>
+          <div class="col-md-8">
+            <div id="e-avatar-u", class="btn btn-primary cargarimg"> 
+              <span>Avatar</span>
+                <%= f.file_field :avatar, class:'file textupload'%>
+            </div>
+            <div id="prev_imagenes">
+              <div id="prev_producer_avatar">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" id="heading-account"><h2>Cambia tu Contraseña</h2></div>
+      <div class="form-edit">
+        <fieldset>
+          <div class="form-group">
+             <%= f.label "Contraseña", class: 'col-sm-4 control-label' %>
+             <div class="col-md-8">
+                <%= f.password_field :password, :autocomplete => 'off', class: 'form-control' %>
+                <p>* Deja este campo en blanco si no quieres cambiar tu contraseña.</p>
+             </div>
+          </div>
+          <div class="form-group">
+            <%= f.label "Confirmación de contraseña", class: 'col-sm-4 control-label' %>
+            <div class="col-md-8">
+              <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+              <%= f.label "Contraseña actual", class: 'col-sm-4 control-label' %>
+              <div class="col-md-8">
+                 <%= f.password_field :current_password, class: 'form-control' %>
+                 <p>* Debes ingresar tu contraseña actual para realizar los cambios.</p>
+              </div>             
+            </div>
+        </fieldset>
+        <div class="form-group text-right">
+           <%= f.submit '+ Guardar Cambios', :class => 'btn btn-success', :id => 'btn-u-edit' %>
+        </div>
+        <% end -%>
+      </div>
+      <div class="text-center" id="div-cancelar">
+        <h2>¿ Quieres Cancelar tu Cuenta ?</h2>
+        <%= button_to "Cancelar mi cuenta", registration_path(resource_name), :data => { :confirm => "¿Estas seguro?" }, :method => :delete, :class => 'btn btn-danger', :id => 'btn-cancelar' %>
+      </div>
+    </div>
+  </div>
+</div>

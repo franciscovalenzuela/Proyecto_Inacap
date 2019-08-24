@@ -1,0 +1,53 @@
+<% title "Acceso usuarios" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="authform">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+          <div class="text-center"><h2>INGRESAR USUARIO</h2></div>
+          <%= devise_error_messages! %>
+          <hr style="margin-bottom: 30px; border-color: rgb(235, 235, 235);">
+            <div class="form-horizontal" role="form">
+              <div class="form-group">
+                <%= f.label :email, :class =>"col-md-2 control-label" %>
+                <div class="col-md-9">
+                  <%= f.email_field :email, class: 'form-control' %>
+                </div>
+              </div>  
+              <div class="form-group">
+                <%= f.label :password, 'Contraseña', :class => "col-md-2 control-label" %>
+                <div class="col-md-9">
+                  <%= f.password_field :password, class: 'form-control' %>
+                </div>                
+              </div> 
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-md-2">
+                  <% if devise_mapping.rememberable? -%>
+                  <div class="checkbox">
+                    <%= f.check_box :remember_me %> <%= f.label :remember_me, 'Recordarme' %>
+                  </div>
+                  <% end -%>
+                </div>
+              </div>
+              <div class="form-group text-right">
+                  <%= f.submit 'Ingresar', :class => 'btn btn-success', :id => 'btn-success-user' %> 
+              </div>        
+            </div> 
+            <hr style="margin-bottom: 30px; border-color: rgba(241, 241, 241, 0.86); margin-top: -60px;">
+            <div class="form-group text-center"> 
+              <%= link_to user_omniauth_authorize_path(:twitter) do %>
+                <i class="fa fa-twitter-square fa-3x twitter"></i>
+              <% end %>
+              <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
+                <i class="fa fa-google-plus-square fa-3x google"></i>
+              <% end %>
+              <%= link_to user_omniauth_authorize_path(:facebook) , id:"facelog" do %>
+                <i class="fa fa-facebook-square fa-3x facebook"></i>
+              <% end %>
+            </div>
+          </div>      
+        <% end -%>
+      </div>      
+    </div>
+  </div>
+</div>

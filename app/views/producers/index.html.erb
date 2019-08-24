@@ -1,0 +1,59 @@
+<% title "Productora home" %>
+
+<%= javascript_include_tag('http://www.google.com/jsapi') %>
+<div class="container" id="globo-standar-producers">
+  <div class="col-md-9">
+    <div id="heading-index">
+      <h2>Mis Eventos</h2>
+    </div>
+      <% @events.each do |e| %>          
+          <%= link_to controller: "events", action: "show", id: e.name.downcase.tr(' ', '-') do %>
+          <div class="row p-e-detalle">
+            <div class="col-md-2">
+              <% e.images.each do |imagen| %>
+                <% if (imagen.flayer == true) %>
+                  <%= image_tag(imagen.img.url(:thumb), :class => "img-responsive", :id => "img-evento-user") %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="col-md-10" style="border-bottom: 1px solid #808080; padding-bottom:8px;">             
+              <span class="p-e-titulo"> <%= e.name %> </span>
+              <span class="p-e-fecha"> <%= e.date.to_date.to_formatted_s(:rfc822) %></span>
+              <% if e.event_status_id == 1 %>
+                <span class="label label-success">Activo</span>
+              <% elsif e.event_status_id == 2 %>
+                <span class="label label-danger">Cancelado</span>
+              <% else %>
+                <span class="label label-default">Suspendido</span>
+              <% end %>
+              <hr style="margin-bottom: 5px; margin-top: 5px; border-color: rgb(242, 242, 242);"> 
+              <%= link_to 'Crear tickets', {controller: "sections", action: "new", id: e.id}, :class => "btn btn-success p-e-btn" %>
+              <%= link_to 'Reportes', {controller: "producers", action: "report", evt: e.id}, :class => "btn btn-info p-e-btn" %>
+              <%= link_to 'Editar', {controller: "events", action: "edit", id: e.id}, :class => "btn btn-primary p-e-btn" %>
+              <%= link_to 'Cambiar estado', {controller: "events", action: "edit", id: e.id, anchor: "estado"}, :class => "btn btn-warning p-e-btn" %>
+              <%= link_to 'Ingresos ', {controller: "events", action: "ingresos", id: e.id}, :class => "btn btn-warning p-e-btn" %>
+            </div>           
+          </div>          
+          <% end %>
+      <% end %>
+  </div>
+  <div class="col-md-3" id="lateral-producer">
+    <div class="infoproducer">
+      <%= image_tag(@producer.avatar.url(:original), :class => "img-responsive", :id => "img-avatar") %>
+      <div id="email-i-producer" class="text-center"><%= @producer.email %> <span class="label label-warning"><%= @producer.producer_role.name %></span></div><br>
+      <hr style="margin-bottom: 20px; border-color: rgb(235, 235, 235); margin-left: 40px;">
+      <div id="mis-links">
+          <%= link_to controller: "events", action: "new" do %>
+          <i class="fa fa-plus"></i>
+          <span><strong>Nuevo Evento</strong></span><br>
+          <% end -%>      
+
+          <%= link_to edit_producer_registration_path do %>
+          <i class="fa fa-cog"></i>
+          <span><strong>Configuración</strong></span>
+        <% end %><br>     
+
+      </div>     
+    </div>
+  </div>
+</div>

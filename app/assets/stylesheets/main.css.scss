@@ -1,0 +1,412 @@
+/* Variables */
+
+$c-primario: #121212;
+$c-base-1: #E5E5E5;
+$c-base-2: #FFFFFF;
+$c-base-3: #008A0B; 
+$c-base-4: #542437;
+$c-base-5: #000000;
+$c-base-6: #F39944; /* Naranjo */
+
+
+$navbar-inverse-bg: rgba(0, 0 ,0, 1);
+$navbar-inverse-border: 0px;
+$navbar-inverse-link-color: $c-base-1;
+$navbar-inverse-link-hover-color: $c-base-2;
+$navbar-inverse-link-active-bg: rgba(0, 0 ,0, 0.0);
+$navbar-inverse-brand-hover-color: $c-base-2;
+$navbar-height: 50px;
+$navbar-margin-bottom: 0px;
+$font-size-base: 16px;
+
+$btn-default-color: $c-base-3;
+$btn-default-bg: $c-base-2;
+$btn-default-border: $c-base-3;
+
+$input-border-focus: $c-base-6;
+
+/* Imports */
+@import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(http://fonts.googleapis.com/css?family=Dosis:300);
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
+
+/* Estilos */
+body {
+  background: url(/images/backgroud-color-white.png) repeat;
+	background-color: $c-primario;
+	font-family: 'Montserrat', sans-serif;
+	color: $c-base-5;
+  min-height: 100%;
+  height: 100%;
+}
+
+header {
+	height: 100%;
+}
+
+main {
+	margin-top: 0px;
+	//margin-bottom: 80px;
+}
+
+#destacados{
+  margin-bottom: 40px;
+}
+
+footer {
+  color:#E1E1E1;
+  background-color: #000000;
+  font-family: 'Raleway', sans-serif;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  margin-top: 25px;
+  ul {
+    list-style: none;
+  }
+}
+
+#bg {
+	background: url(/images/backgroud-color-white.png);
+}
+
+#bg-no {
+	background: url(/images/background.png) repeat center center fixed;
+}
+
+#nav-footer {
+	min-height: 30px;
+	font-size: 12px;
+
+	.navbar-text {
+		margin-top: 5px;
+		margin-bottom: 0px;
+	}
+}
+
+#nav-navigation{
+  border-radius: 0px;
+  min-height: 61px;
+}
+
+#links-nav {
+	text-shadow: 0 0 5px #232328;
+
+	.active {
+		border-bottom: solid 2px #FFA94C;
+    a:link    { color: #FFA94C; }
+    a:visited { color: #FFA94C; }
+	}
+}
+
+.firts_block{
+  background: url(/images/fondo_ps.jpg) no-repeat center;
+  min-height: 450px;
+}
+
+.foto-name{
+  color: white;
+  margin-top: 77px;
+  margin-left: 30px;
+  font-family: fantasy;
+  font-size: 14px;
+}
+
+.index-title{
+  font-family: 'Dosis', sans-serif;
+  margin-top: 40px;
+}
+
+hr{
+  border-color: black;
+  margin-top: 0px;
+  margin-bottom: 50px;
+}
+
+#globo-standar{
+  background-color: #FFF;
+  margin-top: 11px;
+  padding: 0 1.7em 0.8em 3.7em;
+}
+
+#globo-event-home{
+  color: #E7E7E7;
+  padding: 80px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-right: 80px;
+}
+
+.globo-home {
+  background-color: #E7E7E7;
+  margin-top: 40px;
+}
+
+.authform {
+	margin-top: 30px;
+	background-color: #FFF;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	padding-left: 15px;
+	padding-right: 5px;
+	padding-bottom: 1px;
+  border: 1px solid;
+  border-color: rgba(169, 169, 169, 0.61);
+
+	h2 {
+		color: black;
+    font-family: 'Dosis', sans-serif;
+    margin-top: 30px;
+    margin-bottom: 15px;
+	}
+	label {
+		color: black;
+    font-family: 'Dosis', sans-serif;
+    font-size: 16px;
+	}
+	p {
+		color: $c-base-1;
+	}
+	a {
+		font-size: 14px;
+	}
+}
+
+#btn-success-user{
+  margin-right: 62px;
+  margin-top: -116px;
+}
+
+#form-index {
+	-webkit-box-shadow: 0 0 20px 5px #ECD078;
+	box-shadow: 0 0 20px 5px #ECD078;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	-o-border-radius: 0px;
+
+	select {
+    	border-radius: 0px;
+	}
+}
+
+#logo{
+  width: 800px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.fb_iframe_widget{
+  margin-left: 60%;
+}
+
+#subtitulo{
+  font-size: 30px;
+  text-shadow: 7px -3px 9px #000;
+}
+
+#user-email {
+	width:30px;
+  	display: block;
+}
+
+.l-main {
+	color: $c-base-2;
+}
+
+.alert-success{
+  background-color: rgb(77, 138, 22);
+  margin-bottom: 0px;
+  border-radius: 0px;
+  color: #FFFFFF;
+  padding: 11px;
+  text-align: center;
+  border-color: transparent;
+}
+
+.alert-danger{
+  background-color: #8A1616;
+  margin-bottom: 0px;
+  border-radius: 0px;
+  color: #FFFFFF;
+  padding: 11px;
+  text-align: center;
+  border-color: transparent;
+}
+.form-titulo {
+	background-color: rgba(73, 90, 104, 0.36);
+	padding-left: 30px;
+	padding-right: 10px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	margin-bottom: 21px;
+	margin-top: 21px;
+	color: $c-base-1;
+	-webkit-border-radius: 2px 2px 2px 2px;
+	border-radius: 2px 2px 2px 2px;
+}
+
+.form-info {
+	color:#E7E7E7;
+	font-size: 12px;
+}
+.form-horizontal .form-group {
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: 35px;
+}
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 45%; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+    display: none;
+}
+
+.contenido:before{
+    background-color: black;
+	content: "Otra opción";
+    font-weight: bold;
+    left: 40%;
+    margin: -11px 0 0 -7px;
+    padding: 0 3px;
+    position: absolute;
+    top: 0;
+}
+.contenido{
+    border-top: 1px solid #CCCCCC;
+    list-style: none outside none;
+    margin: 20px 0 0;
+    padding: 30px 0 0;
+    position: relative;	
+}
+.limpiar:after{
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden
+	
+}
+
+/* mapa registro */
+
+.mapa{
+   height: 300px;
+   width: 536px;
+   margin-left: -12px;
+   box-shadow: 0 0 10px 1px;
+   margin-right: 0;
+}
+
+.formfh{
+   width: 100%;
+   margin-left: -15px;
+}
+.col-div{
+  position: relative;
+  left: 50px;
+}
+.error {
+  padding-top: 7px;
+  text-align: left;
+  color: #da0606;
+ 
+}
+#advr{
+  font-size: 13px;
+  margin-top: auto;
+}
+#can{
+  margin-top: 36px;
+}
+.btncostdo1 .btncostdo{
+  position: absolute;
+  top: -1px;
+  right: -38px;
+  display: block;
+  width: 180px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center
+}
+.btncostdo1{
+  position: relative;
+}
+.cargarimg {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+}
+.cargarimg input.textupload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+/* Producers */
+
+.pro-contenido{
+  margin-left: 50px;
+}
+.btniz{
+  margin-left: 20px;
+  padding: 6px 29px
+}
+.frm-dir{
+  width: 91.55555%;
+  margin-bottom: 12px;
+}
+.frmg-dir{
+  margin-top: -1.4444px;
+}
+/*Preview images */
+#prev_imagenes{
+  margin-bottom: -30px;
+}
+.imgnp{
+  background-size: contain;
+  max-width: 150px;
+  max-height: 150px;
+  margin-bottom: 7px;
+  float: right;
+  }
+.prev_container{
+  overflow: auto;
+}
+
+.row-preview {
+	padding-top: 7px;
+	margin-left: 0px;
+	margin-right: 0px;
+	border-top: solid;
+	border-width: thin;
+}
+
+.navbar-brand {
+    max-width: 280px;
+}
+
+.form-edit{
+  margin-right: 115px;
+  .control-label{
+    font-family: 'Dosis', sans-serif;
+    font-size: 18px;
+  }
+}
+
+#ps_logo{
+  margin-top: -23px;
+}

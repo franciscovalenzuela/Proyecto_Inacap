@@ -1,0 +1,74 @@
+<% title "Secciones" %>
+
+<div class="container" id="globo-standar">
+  <div class="col-md-12" id="row-detalle"><!-- Detalle del evento -->
+    <h2>Secciones del evento</h2>
+    <div class="col-md-4">
+      <% @event.images.each do |imagen| %>
+        <% if (imagen.flayer) %>
+          <%= image_tag imagen.img.url(:original), :class => "img-galeria"%>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-8" id="cabezera">
+      <h1><%= @event.name %></h1>
+      <%= l @event.date, format: :long %>
+      <%= @event.address %>
+    </div>  
+  </div><!-- Fin detalle del evento -->
+  <div class="col-md-12">  
+    <%= form_for @section, url: {action: 'create'}, remote: true do |f| %>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nombre Sección</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Desde</th>
+        <th>Hasta</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>  
+          <%= hidden_field :section, :event_id, :value=>@event_id%>             
+          <td><%= f.text_field(:name) %></td>
+          <% if @precio_libre == true %>
+            <td><%= f.number_field(:price) %></td>
+          <% else %>
+            <td><%= f.number_field(:price, disabled: true, value: "0") %></td>
+          <% end %>
+          <td><%= f.number_field(:stock) %></td>
+          <td><%= f.datetime_field :from, required: 'true', class: 'f-datetime'%></td>
+          <td><%= f.datetime_field :to, required: 'true', class: 'f-datetime'%></td>
+          <td><%= submit_tag('Guardar', :class => 'btn btn-success', :id => 'btn-section')%></td>
+      </tr>
+    </tbody>
+    </table>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <table id="section_added" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Nombre Seccion</th>
+          <th>Precio</th>
+          <th>Stock</th>
+          <th>Desde</th>
+          <th>Hasta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sections.each do |s| %>
+          <tr>
+            <td><%= s.name %></td>
+            <td><%= s.price %></td>
+            <td><%= s.stock %></td>
+            <td><%= s.from %></td>
+            <td><%= s.to %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div> 
+  </div>
+</div>

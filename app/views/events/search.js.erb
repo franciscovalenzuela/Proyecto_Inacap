@@ -1,0 +1,24 @@
+$('#r-evento').html('<%= escape_javascript render(@events) %>');
+$('#r-paginator').html('<%= escape_javascript(paginate(@events, :remote => true).to_s) %>');
+var eventos = [<%= raw @events_map.to_json(:include => :images) %>];
+var links = [];
+var ciudad_mapa = <%= raw @ciudad.to_json %>;
+centrarMapa (ciudad_mapa);
+<% @events_map.each do |e| %>
+	var evento = {};
+	evento.id = <%= e.id %>;
+	<% e.images.each do |imagen| %>
+		<% if (imagen.flayer == true) %>
+			evento.direccion = "<%= imagen.img.url(:thumb) %>";
+		<% end %>
+	<% end %>
+	links.push(evento);
+<% end %>
+
+if(markers.length!=0) cleanMap();
+for(i in eventos[0]){
+	dibujarMarkers(eventos[0][i]);
+}
+for(i in markers){
+	marketClick(markers[i]);
+}

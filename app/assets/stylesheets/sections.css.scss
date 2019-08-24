@@ -1,0 +1,75 @@
+#globo-standar{
+  padding-right: 65px;
+    h2{
+      font-family      : 'Dosis', sans-serif;
+      background-color : orange;
+      margin-left      : -74px;
+      margin-right     : -80px;
+      margin-top       : 16px;
+      padding-top      : 22px;
+      padding-bottom   : 25px;
+      padding-left     : 35px;
+      margin-bottom    : 30px;
+    }
+ }
+
+  #row-detalle{
+    margin-bottom: 45px;
+  }
+
+
+#cabezera{
+  h1{
+    font-family: 'Dosis', sans-serif;
+    font-size: 60px;
+  }
+}
+
+#tabla-tickets{
+  margin-top: 40px;
+}
+
+.table{
+  display: grid;
+  thead{
+    tr{
+      th{
+        border-bottom: 0px;
+        text-align: left;
+        font-family: 'Dosis', sans-serif;
+        font-weight: bold;
+      }
+    }
+  }
+
+  tbody{
+    #section_name{
+      width: 150px;
+    }
+    #section_price{
+      width: 110px;
+    }
+    #section_stock{
+      width: 80px;
+    }
+    #section_from{
+      width: 160px;
+    }
+    #section_to{
+      width: 160px;
+    }
+  }
+}
+
+#section_added{
+  thead{
+    th{
+      text-align: center;
+    }
+  }
+  tbody{
+    td{
+      text-align: center;
+    }
+  }
+}

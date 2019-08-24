@@ -1,0 +1,45 @@
+<% title "Resultado de la transacción" %>
+
+<div class="container">
+	<div class="col-md-10 col-md-offset-1">
+		<div id="globo-search" style="padding: 10px;">
+			<% if (@estado_firma == true) %>
+				<h2>Resumen Transacción</h2>
+				<table class="table">
+					<tr>
+						<td>Estado de la transaccion</td>
+						<td><%= @estadoTx  %></td>
+					</tr>
+					<tr>
+						<td>ID de la transaccion</td>
+						<td><%= @transactionId %></td>
+					</tr>
+					<tr>
+						<td>Referencia de la venta</td>
+						<td><%= @reference_pol %></td> 
+					</tr>
+					<tr>
+						<td>Referencia de la transaccion</td>
+						<td><%= @referenceCode %></td>
+					</tr>
+					<tr>
+						<td>Valor total</td>
+						<td>$<%= @tx_value %></td>
+					</tr>
+					<tr>
+						<td>Descripción</td>
+						<td><%= @extra1 %></td>
+					</tr>
+					<tr>
+						<td>Entidad:</td>
+						<td><%= @lapPaymentMethod %></td>
+					</tr>
+				</table>
+			<% else %>
+				<h1>Error validando firma digital.</h1>
+			<% end %>
+
+			<%= link_to 'Volver', "/", :class => "btn btn-primary" %>
+		</div>
+	</div>
+</div>

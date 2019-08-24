@@ -1,0 +1,122 @@
+///////////////////PAGES/ABOUT///////////////////////////
+#globo-about{
+  background-color: #FFF;
+  margin-top: 11px;
+  padding: 0 1.7em 2.8em 3.7em; 
+  width: 1000px;
+  h2{
+      font-family      : 'Dosis', sans-serif;
+      background-color : orange;
+      margin-left      : -59px;
+      margin-right     : -27px;
+      margin-top       : 16px;
+      padding-top      : 22px;
+      padding-bottom   : 25px;
+      padding-left     : 35px;
+      margin-bottom    : 30px;
+    }
+    p{
+      text-align: center;
+      font-family      : 'Dosis', sans-serif;
+      margin-left: 60px;
+      margin-right: 80px;
+      font-size: 18px;
+    }
+  h3{
+  text-align: center;
+  color: gray;
+  }
+}
+
+#photo-right{
+  margin-left: -40px;
+}
+
+.caption div {
+    box-shadow: 0 0 5px #C8C8C8;
+    transition: all 0.3s ease 0s;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.img-circle {
+    border-radius: 0;
+}
+
+.ratio {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+}
+.img-circle {
+    border-radius: 50%;
+}
+.img-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+
+//////////////////////////Price/////////////////////////////////////////////
+///
+#globo-price{
+  background-color: #FFF;
+  margin-top: 11px;
+  padding: 0 1.7em 2.8em 3.7em; 
+  width: 1000px;
+h2{
+      font-family      : 'Dosis', sans-serif;
+      background-color : orange;
+      margin-left      : -59px;
+      margin-right     : -27px;
+      margin-top       : 16px;
+      padding-top      : 22px;
+      padding-bottom   : 25px;
+      padding-left     : 35px;
+      margin-bottom    : 30px;
+    }
+  h1{
+    font-size: 60px;
+  }
+}
+
+.title-light{
+  text-transform: uppercase;
+  font-size: 12px;
+  font-family: inherit;
+  margin-bottom: -26px;
+  margin-left: -25px;
+  color: rgb(144, 142, 142);
+}
+
+.text-area{
+  font-family: 'Dosis', sans-serif;
+  font-size: 21px;
+  margin-top: 20px;
+}
+
+#e-gratis{
+  h2{
+    font-family      : 'Dosis', sans-serif;
+    background-color : rgb(249, 249, 249);
+  }
+}
+
+.title-gold{
+  color: rgb(229, 211, 27);
+  font-size: 17px;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+#title{
+  h2{
+    background-color : rgba(215, 215, 215, 0.41);
+  }
+}

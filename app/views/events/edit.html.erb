@@ -1,0 +1,126 @@
+<% title "Editar evento" %>
+
+<%= javascript_include_tag('http://maps.googleapis.com/maps/api/js?key=AIzaSyCpj1FJqi_RPsiEE6fG5sg8pOjmB_vQCLk&sensor=true') %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2" id="globo-event-new">
+      <div class="text-center"><h2>Edita tu Evento</h2></div>
+        <%= form_for(resource, :as => @event, :url => { :action => "update"}, :html => {class: 'form-horizontal contenedor-create', :method => :put, :role => 'form',:multipart => true}) do |f| %>
+         <%= devise_error_messages! %>
+         <div class="form-new-event">
+           <div class="form-group">
+            <%= f.label :name, 'Nombre del evento', class: 'col-md-4 control-label' %>
+             <div class="col-md-8">
+               <%= f.text_field :name, :autofocus => true, required: 'true', placeholder: 'Requerido', class: 'form-control capt' %>
+             </div>
+           </div>
+           <div class="form-group">
+             <%= f.label :date, 'Fecha del evento', class: 'col-md-4 control-label' %>
+             <div class="col-md-4">
+               <%= f.datetime_field :date, required: 'true', class: 'form-control f-datetime'%>
+             </div>
+           </div>
+           <div class="form-group">
+            <%= f.label :name, 'Tipo de evento', class: 'col-md-4 control-label' %> 
+             <div class="col-md-6">
+              <%= collection_select(:event, :event_type_id, EventType.order("name ASC").all, :id, :name, {:prompt => "-- Seleccione --", :selected => @event.event_type_id}, {class: "form-control"}) %>
+             </div>
+           </div>
+           <div class="form-group">
+            <%= f.label :city, 'Ciudad', class: 'col-sm-4 control-label' %>
+            <div class="col-md-6">
+              <%= collection_select(:event, :city_id, City.order("name asc").all, :id, :name, {:prompt => "-- seleccione --", :selected => @event.city_id}, {class: "form-control"}) %> 
+            </div>
+           </div>
+           <div class="form-group">
+            <%= f.label :address, 'Dirección', class: 'col-sm-4 control-label' %>
+             <div class="col-md-8">
+              <div class="input-group">
+                <%= f.text_field :address, required: 'true', placeholder: 'Requerido', class: 'form-control' %>
+                <span class="input-group-btn">
+                  <button id="buscar" class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+             </div>
+           </div>
+          <div class="form-group">
+            <div id="mapa-edit"></div>
+          </div>
+          <%= javascript_tag do %>
+            var edit_lat = <%= @event.latitude %>
+            var edit_lng = <%= @event.longitude %>
+          <% end %>
+           <div class="form-group">
+              <%= f.label :description, 'Descripción del evento', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-8">  
+            <div id="area"> 
+              <%= f.text_area :description, :autofocus => true, placeholder: 'Requerido', class: 'form-control' %>
+            </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="event_img" class="col-xs-4 control-label">Editar Imágenes</label>
+            <div class="col-sm-5">
+              <div class="row">
+                <% if @event.images.exists? 
+                    vlr = 0 %>
+                  <% @event.images.each do |imagen| %>
+                    <%= f.fields_for :images, imagen do |image_fields| %>
+                        <%= image_tag(imagen.img.url(:thumb), :class => "img-responsive", :id => "img-e-editar") %>
+                        <% if imagen.flayer%>
+                          <%= javascript_tag do %>
+                            var flayer_act = <%= imagen.flayer %>
+                          <% end %>
+                         <p>Elegir Afiche <%= radio_button_tag 'event_img', vlr+=1, true %></p>
+                         <p>Borrar foto<%= image_fields.check_box :_destroy %></p>
+                        <% else %>
+                         <p>Elegir Afiche<%= radio_button_tag 'event_img', vlr+=1 %></p>
+                         <p> Borrar foto<%= image_fields.check_box :_destroy %></p>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>       
+          </div>                  
+          <div class="form-group">
+             <label for="event_img" class="col-xs-4 control-label">Cargar Imágenes</label>
+          <div class="carga-imagen">
+            <div class="btn btn-primary cargarimg"> 
+              <span>Subir imagen</span>
+              <input id="event_img" type="file" name="img[]" multiple="true" class="file textupload form-control">  
+            </div>
+            <div id ="helpflayer" class="col-md-8 col-md-offset-3">
+              <p id="advr">Las imágenes no debe ser mayores a 1mb.</p>
+            </div>
+            </div>
+              <div class="col-md-12">
+            <div id="prev_imagenes">
+                <div id="prev_event_img">
+                </div>
+            </div>
+            </div>    
+              <%= hidden_field :event, :producer_id, :value=>current_producer.id%>
+              <%= hidden_field :event, :latitude, :value=> @event.latitude %>
+              <%= hidden_field :event, :longitude, :value=> @event.longitude %>
+          </div>
+          <a name="estado"></a>
+          <div class="text-center"><h2 style="margin-right: -142px;">Cambiar estado del evento</h2></div>
+          <div class="form-group">
+            <%= f.label :event_status, 'Estado del evento', class: 'col-md-4 control-label' %> 
+             <div class="col-md-6">
+              <%= collection_select(:event, :event_status_id, EventStatus.order("name ASC").all, :id, :name, {:prompt => "-- Seleccione --", :selected => @event.event_status_id}, {class: "form-control"}) %>
+             </div>
+           </div>
+          <div class="form-group">
+            <div class="col-md-4 col-md-offset-8 text-right">
+              <%= button_tag(type: 'submit', class: "btn btn-success btn-lg", id:"btn-create") do %>
+              Guardar Cambios
+              <% end %>
+            </div>
+          </div>
+         </div>
+        <% end %>
+    </div>
+  </div>
+</div>

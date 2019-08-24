@@ -1,0 +1,15 @@
+[<% @events.each_with_index do |event, i| %>
+	{
+		"id": <%= event.id %>,
+		"address": "<%= event.address %>",
+		"images": [
+			<% event.images.each do |imagen| %>
+			{
+				"src": 	"<%= imagen.img.url(:medium) %>"
+			},
+			<% end %>
+			{}
+		]
+	},
+<% end %>
+{}]

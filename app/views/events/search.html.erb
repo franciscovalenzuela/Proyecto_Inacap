@@ -1,0 +1,115 @@
+<% title "Buscador de eventos" %>
+
+<%= javascript_include_tag('http://maps.googleapis.com/maps/api/js?key=AIzaSyCpj1FJqi_RPsiEE6fG5sg8pOjmB_vQCLk&sensor=true') %>
+
+<div id="globo-search" class="container"><!-- SECTION SEARCH -->   
+  <div class="row" id="buscador">
+    <div class="col-md-9">
+      <div class="row" id="panel-busqueda">
+        <form role="form" accept-charset="UTF-8" action="/events/search" data-remote="true" method="get">
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= collection_select(:event_type, :id, EventType.order("name ASC").all, :id, :name, {:prompt => "-- Seleccione --", :selected => @selected}, {class: "form-control"}) %>
+            </div>
+          </div> 
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= collection_select(:city, :id, City.order("name ASC").all, :id, :name, {:prompt => "-- Seleccione --", :selected => @ciudad.first.id}, {class: "form-control", name: "ciudad_busqueda"}) %>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <button id="btn-buscar"type="submit" class="btn btn-success btn-block"><i class="fa fa-search"></i> Buscar </button>
+            <input type="hidden" name="mapa" value=0>
+          </div>   
+        </form>   
+      </div>           
+    </div>
+    <div class="col-md-3">
+      <div id="btn-visual" class="btn-group btn-group-justified">
+        <div class="btn-group">
+          <button id="btn-mosaico" type="button" class="btn btn-primary active">Mosaico</button>
+        </div class="btn-group">
+        <div class="btn-group">
+          <button id="btn-mapa" type="button" class="btn btn-primary">Mapa</button>
+        </div class="btn-group">
+      </div>
+    </div>
+  </div>  <!-- END SECTION SEARCH -->
+  <div class="row" id="show-search">  <!-- SHOW SEARCH -->
+    <div class="col-md-12">
+      <div class="row">
+        <div id="r-evento">
+          <% 
+            v_cierre = [3, 7, 11, 15, 19, 23]
+            len = @events.length
+          %>
+          <% @events.each_with_index do |e, index| %>
+
+            <% if index % 4 == 0 %>
+              <div class="row">
+            <% end %>
+              <div class="col-md-3">
+                <%= link_to controller: "events", action: "show", id: e.name.downcase.tr(' ','-') do %>   
+                  <% e.images.each do |imagen| %>
+                    <% if (imagen.flayer == true) %>
+                      <%= image_tag(imagen.img.url(:thumb), :class => "img-responsive", :id => "img-search") %>
+                    <% end %>
+                  <% end %>
+                  <div class="resultados-search"> 
+                    <span class="titulo"><%= e.name %></span><br>
+                    <span class="ubicacion"><%= e.address %></span>
+                    <span class="tipo-evento"><%= e.event_type.name %></span>
+                    <span class="ciudad"><%= e.city.name %></span>
+                  </div>
+                <% end %>
+              </div>
+
+            <% if (v_cierre.include?(index) or index+1 == len) %>
+              </div>
+            <% end %>
+
+          <% end %>
+        </div>
+        <div id="r-mapa">
+          <%= render "mapa" %>
+        </div>
+      </div>
+      <div class="row">
+        <div id="r-paginator" class="text-center">
+          <%= paginate @events, :remote => true %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END SHOW SEARCH -->
+  <div class="row" id="mas-vistos">
+  <h2>Más eventos</h2>
+    <div class="col-md-4">
+        <strong>Conciertos</strong><br>
+        <% @events.each do |evento| %>
+          <% if evento.event_type_id == 3%>
+              <%= link_to(evento.name, evento.name.downcase.tr(' ', '-')) %> <br>
+          <% end -%>
+        <% end -%>
+    </div>
+      <div class="col-md-4">
+        <strong>Deporte</strong><br>
+        <% @events.each do |evento| %>
+          <% if evento.event_type_id == 4%>
+              <%= link_to(evento.name, evento.name.downcase.tr(' ', '-')) %> <br>
+          <% end -%>
+        <% end -%>
+      </div>
+      <div class="col-md-4">
+        <strong>Teatro</strong><br>
+         <% @events.each do |evento| %>
+          <% if evento.event_type_id == 1%>
+              <%= link_to(evento.name, evento.name.downcase.tr(' ', '-')) %> <br>
+          <% end -%>
+        <% end -%>
+      </div>
+  </div>
+  </div>  
+</div>
+
+

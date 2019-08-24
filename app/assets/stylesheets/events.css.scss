@@ -1,0 +1,549 @@
+$c-titulo-1: #000000;
+$c-titulo-2: #FFFFFF;
+
+/////////////// SEARCH /////////////////////////////////////////////
+
+.fondo-blanco {
+  background-color: white;
+}
+
+#globo-search {
+  background-color : #FFF;
+  margin-top       : 11px;
+  padding          : 0 1.7em 0.8em 1.7em;
+}
+#show-search{
+  margin-bottom: 40px;
+}
+
+#buscador{
+  margin-top: 30px;
+}
+
+#panel-busqueda{
+	label{
+		font-size: 14px;
+		color: #7C7EC8;
+		margin-bottom: 15px;
+	}
+	select{
+		color: black;
+	}
+}
+
+#links{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#mas-vistos{
+  font-family: 'Raleway', sans-serif;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 30px;
+  h2{
+    font-family: 'Dosis', sans-serif;
+    background-color: orange;
+    margin-left: -77px;
+    margin-right: -77px;
+    margin-top: 16px;
+    padding-top: 22px;
+    padding-bottom: 25px;
+    padding-left: 35px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  strong{
+    font-family: sans-serif;
+  }
+}
+//////////////////////////////////////////////////////////////////////
+
+.globo {
+	background-color: #E7E7E7;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+}
+
+.e-patrocinado {
+	font-size: 12px;
+	color: #C4C4C4;
+}
+
+#r-evento {
+	margin-top: 9px;
+}
+
+.resultados-search {
+	color: #B7B7B7;
+  margin-bottom: 15px;
+  background: rgba(240, 238, 238, 0.81);
+  padding: 17px 14px;
+}
+
+#img-search{
+  max-width: 100%;
+  position: relative;
+}
+
+.resultados:hover {
+	opacity: 0.8;
+}
+
+.tipo-evento {
+	font-size: 12px;
+	color: #343434;
+}
+
+.ciudad {
+	padding-top: 5px;
+	//float: right;
+	font-size: 10px;
+	color: #A7A7A7;
+}
+
+.ubicacion {
+	color: #ABABAB;
+	font-size: 12px;
+}
+
+.titulo {
+	color: #FF4E3D;
+}
+
+#btn-visual {
+	margin-left: 15px;
+	padding-right: 30px;
+	margin-bottom: 8px;
+  margin-top: -25px;
+}
+
+#btn-mosaico {
+	z-index: 0;
+	margin-top: 25px;
+}
+
+#btn-mapa {
+	z-index: 0;
+	margin-top: 25px;
+}
+
+#globo-event-new{
+  background-color: $c-titulo-2;
+  padding: 0 1.7em 0.8em 3.7em;
+  margin-top: 11px;
+  h2{
+    font-family: 'Dosis', sans-serif;
+    background-color: orange;
+    margin-left: -59px;
+    margin-right: -28px;
+    padding-top: 22px;
+    padding-bottom: 25px;
+    padding-left: 35px;
+    margin-bottom: 30px;
+  }
+}
+
+.form-new-event{
+  margin-right: 115px;
+  .control-label{
+    font-family: 'Dosis', sans-serif;
+    font-size: 18px;
+  }
+}
+
+#MapaCreacion{
+  margin-left: 72px;
+  height: 200px;
+}
+
+#mapa-edit{
+  margin-left: 12px;
+  margin-right: 16px;
+  width: 100%;
+  height: 300px;
+}
+
+.sub-titulo{
+  margin-left: 30px;
+  padding-left: 15px;
+  padding-right: 70px;
+  margin-bottom: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #646bbc;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  color: #DBAF16;
+	text-shadow: 0 0 4px #242401;
+}
+
+.titulo-pagina {
+	margin-bottom: 10px;
+	background-color: rgba(255, 255, 255, 0.1);
+	padding: 10px;
+	color: #DBAF16;
+	text-shadow: 0 0 4px #242401;
+	h2 {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	i {
+		margin-right: 20px;
+	}
+}
+
+#mapa-busqueda {
+	height: 405px;
+	margin-top: 35px;
+}
+
+.infowindows {
+	color: black;
+	width: 350px;
+	img {
+
+	}
+	.col-md-5 {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.col-md-7 {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.iw-name {
+		color: #272727;
+		font-size: 14px;
+		font-weight: bold;
+		margin-left: 5px;
+	}
+	.iw-address {
+		color: #656565;
+		font-size: 13px;
+		margin-left: 5px;
+	}
+}
+
+////////////////////////////////////////////
+//                  SHOW                  //
+////////////////////////////////////////////
+
+.seccion-info{
+  margin-top: 0px;
+  background-color: #FFF;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 0px 0px 1px 1px;
+  
+  padding: 0 1.7em .8em 1.7em;
+  padding-top: 30px;
+  h3{
+    font-family: 'Dosis', sans-serif;
+  }
+}
+.sociales{
+  background-color: rgba(223, 107, 0, 1);
+  padding: 0 1.7em .8em 1.7em;
+}
+
+.seccion-cabezera{
+  background-color: #000000;
+  padding: 0 1.7em .8em 5.7em;
+  h3{
+    margin-top: 0px;
+    font-family: 'Dosis', sans-serif;
+    color: #c8c8c8;
+    padding-top: 30px;
+  }
+}
+.seccion-detalle{
+  background-color: #df6b00;
+  padding: 0 1.7em .8em 5.7em;
+  h3{
+    margin-top: 0px;
+    font-family: 'Dosis', sans-serif;
+    color: #c8c8c8;
+    padding-top: 30px;
+  }
+}
+
+.seccion-cabezera2{
+  background-color: #4D4D4D;
+  padding: 0 1.7em .8em 21.7em;
+  padding-top: 20px;
+  h3{
+    margin-top: 0px;
+    font-family: 'Dosis', sans-serif;
+    color: #c8c8c8;
+    padding-top: 22px;
+  }
+}
+
+#tipo-show {
+  color: $c-titulo-2;
+  font-family: 'Dosis', sans-serif;
+}
+
+#ciudad-show {
+  color: $c-titulo-2;
+  font-family: 'Dosis', sans-serif;
+}
+
+#nombre-show {
+	color: $c-titulo-2;
+	font-family: 'Dosis', sans-serif;
+	font-size: 60px;
+}
+
+#fecha-show{
+  color: $c-titulo-2;
+  font-family: 'Dosis', sans-serif;
+}
+
+.link-rapido {
+	margin-top: -41px;
+	-webkit-border-radius: 20px 20px 20px 20px;
+	border-radius: 50%;
+	border-color: #FFFFFF;
+	padding-top: 20px;
+	padding-bottom: 20px;
+  margin-bottom: 20px;
+  background-color: #df6b00;
+}
+
+.link-rapido:hover {
+	background-color: #4D4D4D;
+	color: #333333;
+	border-color: #333333;
+}
+
+#btn-ticket{
+  color: #FFFFFF;
+  text-align: center;
+  padding-left: 20px;
+  i{
+    padding-left: 80px;
+    line-height: 0px;
+  }
+}
+
+#Descripcion-show{
+  font-family: 'Dosis', sans-serif;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+#mapa-show {
+	height: 300px;
+	weight: 100%;
+}
+
+#info-direccion{
+  margin-top: -184px;
+  margin-left: 65%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.86);
+}
+
+#ubicacion-show {
+	background-color: #333333;
+	font-family: 'Raleway', sans-serif;
+	padding: 30px;
+}
+
+#ubicacion-ciudad {
+	font-size: 12px;
+  color: white;
+}
+
+#ubicacion-direccion {
+	font-size: 18px;
+	margin-right: 10px;
+  color: white;
+}
+
+.t-right{
+  padding-left: 190px;
+}
+
+#muro-show {
+	background-color: #333333;
+	font-family: 'Raleway', sans-serif;
+	padding: 30px;
+	margin-bottom: 20px;
+}
+
+#titulo-show{
+  margin-top: 45px;
+}
+
+.img-galeria{
+  width: 100%;
+  max-height: 100%;
+}
+
+#lateral{
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: -10px;
+}
+
+.seccion-lateral{
+  background-color: #FFFFFF;
+  margin-top: -12px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  h3{
+    font-family: 'Dosis', sans-serif;
+    padding-top: 15px;
+  }
+}
+
+.seccion-lateral-evento{
+  background-color: #FFFFFF;
+  margin-top: -16px;
+  padding: 0 1.7em .8em 1.7em;
+  h3{
+    font-family: 'Dosis', sans-serif;
+    padding-top: 15px;
+  }
+}
+
+.info{
+  p{
+    font-family: 'Dosis', sans-serif;
+  }
+}
+
+#disqus_thread{
+  margin-top: 25px;
+  margin-bottom: 80px;
+}
+
+//////////   CAROUSEL  SHOW //////////////////////
+.item{
+    background: #333;    
+    text-align: center;
+    height: 300px !important;
+}
+.carousel{
+    margin-top: 10px;
+}
+.carousel-show{
+  margin: 0px;
+  margin-top: 0px;
+}
+
+//////////////////////////////////////////
+
+
+
+////////////////// index Events //////////////////////////////////
+.cuadro_intro_hover{
+    padding: 0px;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+  }
+  .cuadro_intro_hover:hover .caption{
+    opacity: 1;
+    transform: translateY(-150px);
+    -webkit-transform:translateY(-150px);
+    -moz-transform:translateY(-150px);
+    -ms-transform:translateY(-150px);
+    -o-transform:translateY(-150px);
+  }
+  .cuadro_intro_hover img{
+    z-index: 4;
+  }
+  .cuadro_intro_hover .caption{
+    position: absolute;
+    top:150px;
+    -webkit-transition:all 0.3s ease-in-out;
+    -moz-transition:all 0.3s ease-in-out;
+    -o-transition:all 0.3s ease-in-out;
+    -ms-transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out;
+    width: 100%;
+  }
+  .cuadro_intro_hover .blur{
+    background-color: rgba(0,0,0,0.7);
+    height: 300px;
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+  }
+  .cuadro_intro_hover .caption-text{
+    z-index: 10;
+    color: #fff;
+    position: absolute;
+    height: 300px;
+    text-align: center;
+    top:-7px;
+    width: 100%;
+  }
+ .capt{
+    text-transform:capitalize;
+ }
+/////////////////////////////////////////////////////////////////////
+////
+///
+///////////////////////// EDITAR EVENTO ////////////////////////////
+
+#mapa-edit{
+  margin-left: 72px;
+  height: 200px;
+} 
+
+#img-e-editar{
+  max-width: 70%;
+  max-height: 36%;
+  width: 185px;
+  height: 120px;
+  border-radius: 7px;
+}
+
+#helpflayer{
+  margin-left: 37%;
+}
+
+.lista-sombra {
+  font-size: 18px;
+  text-shadow: 0px 0px 1px #D4D4D4;
+  a { color: #FFFFFF;}
+  a:hover { color: #FFFFFF;}
+  a:visited { color: #FFFFFF;}
+}
+
+.ps-fb {
+  margin-top: 20px;
+}
+
+@media (max-width: 800px) { 
+  .seccion-lateral-evento{
+    display: none;
+  }
+  #section-ticket{
+    display: none;
+  }
+  .seccion-info{
+    display: none;
+  }
+  #info-direccion{
+    margin-left: 60%;
+    margin-right: 15px;
+  }
+  .seccion-cabezera2{
+    h3{margin-left: -65px;}
+  }
+  .ps_logo{ display: none;}
+}
+
+@media (max-width: 450px){
+  #ps_logo{ display: none;}
+  #logo-panorama { display: none; }
+  #accesos{ margin-left: -40px; }
+  .seccion-cabezera2{
+    h3{margin-left: -65px;}
+  }
+}

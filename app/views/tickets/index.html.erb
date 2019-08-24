@@ -1,0 +1,40 @@
+<% title "Tus tickets" %>
+<div class="container">
+	<div class="col-md-12">
+		<div id="globo-search">
+			<div class="titulo-mas-eventos" style="margin-top: -11px; margin-right: -26px;">
+	      <h2>Tus tickets</h2>
+	    </div>
+			<table class="table">
+				<thead>
+          <th>N° Ticket</th>
+          <th>Evento</th>
+          <th>Sección</th>
+          <th>Estado</th>
+          <th>Descargar</th>
+        </thead>
+        <tbody>
+					<% @tickets.each do |t| %>
+						<tr>
+							<td class="col-md-1"><%= t.id %></td>
+							<td class="col-md-6"><%= t.section.event.name %></td>
+							<td class="col-md-3"><%= t.section.name %></td>
+							<td class="col-md-1">
+								<% if t.state == false %>
+									<%= "Activo" %>
+								<% else%>
+									<%= "Validado" %>
+								<% end %>
+							</td>
+							<td class="col-md-1">
+								<% if t.state == false %>
+								<%= link_to"PDF", {controller: "tickets", action: "pdf", id: t.id, format: 'pdf'}, :class => "btn btn-success bt-lg" %>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
